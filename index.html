@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Pipeline (diagnostic)</title>
+<title>Pipeline Docs</title>
 <style>
   :root { --muted:#475569; --border:#e2e8f0; --link:#2563eb; }
   html, body { height: 100%; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; margin:0; color:#0f172a; }
@@ -12,6 +12,15 @@
   #cy { flex: 1 1 auto; min-height: 0; border-top: 1px solid #e2e8f0; }
   @supports (height: 100dvh) { html, body { height: 100dvh; } }
   a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
+
+  /* Search UI */
+  .search { margin: 8px 0 0; }
+  #assetSearch {
+    width: 100%; max-width: 420px;
+    padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px;
+    font: inherit; outline: none;
+  }
+  #assetSearch:focus { border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.2); }
 </style>
 
 <!-- Scripts (order matters) -->
@@ -22,8 +31,13 @@
 <body>
   <div class="wrap">
     <h1>Pipeline graph</h1>
-    <p class="muted">Double-click an asset to open its page. Single click highlights 1-hop upstream & downstream dependencies.</p>
+    <p class="muted">Double-click opens the asset page. Single click highlights 1-hop upstream & downstream dependencies.</p>
+
+    <div class="search">
+      <input id="assetSearch" type="search" placeholder="Search assets by name…" autocomplete="off" />
+    </div>
   </div>
+
   <div id="cy"></div>
 
 <script>
@@ -31,7 +45,7 @@
   document.addEventListener('DOMContentLoaded', async () => {
     if (!window.cytoscape || !window.dagre) return;
 
-    // Try both common locations for elements.json
+    // Load data
     const candidates = ['site_data/elements.json','site/site_data/elements.json'];
     let data = null;
     for (const url of candidates) {
@@ -41,10 +55,9 @@
       } catch {}
     }
     if (!data) return;
-
     const elements = (data && data.elements) || [];
 
-    // Build group color map from assets
+    // Group color map
     const groupBaseColor = {};
     for (const e of elements) {
       const d = e.data || {};
@@ -54,7 +67,6 @@
         if (!groupBaseColor[d.group]) groupBaseColor[d.group] = d.color;
       }
     }
-
     function darkenColor(hex, amt = 0.25) {
       if (!hex) return '#64748b';
       hex = hex.replace('#','');
@@ -67,8 +79,6 @@
       const toH = v => v.toString(16).padStart(2,'0');
       return `#${toH(r)}${toH(g)}${toH(b)}`;
     }
-
-    // Ensure group nodes have a darker color and a label
     for (const e of elements) {
       const d = e.data || {};
       if (d.type === 'group') {
@@ -87,7 +97,7 @@
       wheelSensitivity: 0.2,
       boxSelectionEnabled: true,
       autoungrabify: true,
-      autounselectify: true, // use classes for highlight, not selection
+      autounselectify: true,
       style: [
         { selector: 'node',
           style: {
@@ -138,81 +148,78 @@
           }
         },
         /* Highlight classes */
-        { selector: 'node.hl-node',
-          style: { 'border-width': 3, 'border-color': '#60a5fa' } /* light blue box */
-        },
-        { selector: 'edge.hl-edge',
-          style: {
-            'line-color': '#60a5fa',
-            'target-arrow-color': '#60a5fa',
-            'width': 2
-          }
-        }
+        { selector: 'node.hl-node', style: { 'border-width': 3, 'border-color': '#60a5fa' } },
+        { selector: 'edge.hl-edge', style: { 'line-color': '#60a5fa', 'target-arrow-color': '#60a5fa', 'width': 2 } }
       ],
-      layout: {
-        name: 'dagre',
-        rankDir: 'LR',
-        nodeSep: 80,
-        edgeSep: 40,
-        rankSep: 140,
-        spacingFactor: 1.2
-      }
+      layout: { name: 'dagre', rankDir: 'LR', nodeSep: 80, edgeSep: 40, rankSep: 140, spacingFactor: 1.2 }
     });
 
     cy.once('render', () => { cy.fit(null, 40); });
 
-    // --- Single vs double tap handling + 1-hop highlight ---
-    let tapTimeout = null;
-    let lastTapTime = 0;
-    let lastTapId = null;
+    // Single vs double tap + 1-hop highlight
+    let tapTimeout = null, lastTapTime = 0, lastTapId = null;
     const DBL_TAP_MS = 300;
 
     function clearHighlights() {
       cy.elements('.hl-node').removeClass('hl-node');
       cy.elements('.hl-edge').removeClass('hl-edge');
     }
-
     function highlightOneHop(n) {
       if (n.data('type') === 'group') return;
       clearHighlights();
       n.addClass('hl-node');
-
       const inEdges  = n.incomers('edge');
       const outEdges = n.outgoers('edge');
-
-      inEdges.addClass('hl-edge');
-      outEdges.addClass('hl-edge');
-
+      inEdges.addClass('hl-edge'); outEdges.addClass('hl-edge');
       inEdges.sources().filter('[type!="group"]').addClass('hl-node');
       outEdges.targets().filter('[type!="group"]').addClass('hl-node');
     }
 
-    // Single click = highlight; Double click = navigate (if url)
     cy.on('tap', 'node', (evt) => {
-      const n = evt.target;
-      const now = Date.now();
-      const id = n.id();
-
+      const n = evt.target, now = Date.now(), id = n.id();
       if (tapTimeout) { clearTimeout(tapTimeout); tapTimeout = null; }
-
       if (lastTapId === id && (now - lastTapTime) < DBL_TAP_MS) {
-        lastTapId = null;
-        lastTapTime = 0;
-        const d = n.data();
-        if (d.type !== 'group' && d.url) window.location.href = d.url;
+        lastTapId = 0; lastTapTime = 0;
+        const d = n.data(); if (d.type !== 'group' && d.url) window.location.href = d.url;
         return;
       }
-
-      lastTapId = id;
-      lastTapTime = now;
-      tapTimeout = setTimeout(() => {
-        tapTimeout = null;
-        highlightOneHop(n);
-      }, DBL_TAP_MS);
+      lastTapId = id; lastTapTime = now;
+      tapTimeout = setTimeout(() => { tapTimeout = null; highlightOneHop(n); }, DBL_TAP_MS);
     });
 
-    // Click on background clears highlights
-    cy.on('tap', (evt) => { if (evt.target === cy) clearHighlights(); });
+    // --- Search ---
+    const searchInput = document.getElementById('assetSearch');
+    const debounce = (fn, ms=250) => { let t; return (...a) => { clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; };
+
+    function runSearch() {
+  const q = (searchInput.value || '').trim().toLowerCase();
+  if (!q) { clearHighlights(); return; }
+
+  const matches = cy.nodes().filter(n =>
+    n.data('type') !== 'group' &&
+    ((n.data('label') || '').toLowerCase().includes(q))
+  );
+
+  if (matches.length === 1) {
+    const n = matches[0];
+    highlightOneHop(n);
+    // Less zoomed-in view: bump padding up
+    cy.animate({ fit: { eles: n, padding: 280 }, duration: 300 });
+  } else if (matches.length > 1) {
+    clearHighlights();
+    matches.addClass('hl-node');
+    cy.animate({ fit: { eles: matches, padding: 280 }, duration: 300 });
+  } else {
+    clearHighlights();
+  }
+}
+
+
+    searchInput.addEventListener('input', debounce(runSearch, 250));
+    searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') runSearch(); });
+
+    // Background click clears only if no active search
+    cy.on('tap', (evt) => { if (evt.target === cy && !(searchInput.value || '').trim()) clearHighlights(); });
   });
 })();
 </script>
