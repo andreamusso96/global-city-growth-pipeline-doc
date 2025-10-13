@@ -1,1 +1,1 @@
-This repository contains code to create a static online documentation for the pipeline for the following project: https://github.com/andreamusso96/global-city-growth
+This repository contains code to create a **static online documentation** for the pipeline in the following project: https://github.com/andreamusso96/global-city-growth
