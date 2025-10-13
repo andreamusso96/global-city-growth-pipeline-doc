@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pipeline (diagnostic)</title>
+<style>
+  :root { --muted:#475569; --border:#e2e8f0; --link:#2563eb; }
+  html, body { height: 100%; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; margin:0; color:#0f172a; }
+  body { display: flex; flex-direction: column; }
+  .wrap { max-width:1100px; margin:24px auto 0; padding:0 16px; }
+  #cy { flex: 1 1 auto; min-height: 0; border-top: 1px solid #e2e8f0; }
+  @supports (height: 100dvh) { html, body { height: 100dvh; } }
+  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
+</style>
+
+<!-- Scripts (order matters) -->
+<script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js" defer></script>
+<script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js" defer></script>
+<script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" defer></script>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Pipeline graph</h1>
+    <p class="muted">Double-click an asset to open its page. Single click highlights 1-hop upstream & downstream dependencies.</p>
+  </div>
+  <div id="cy"></div>
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (!window.cytoscape || !window.dagre) return;
+
+    // Try both common locations for elements.json
+    const candidates = ['site_data/elements.json','site/site_data/elements.json'];
+    let data = null;
+    for (const url of candidates) {
+      try {
+        const r = await fetch(url, { cache: 'no-store' });
+        if (r.ok) { data = await r.json(); break; }
+      } catch {}
+    }
+    if (!data) return;
+
+    const elements = (data && data.elements) || [];
+
+    // Build group color map from assets
+    const groupBaseColor = {};
+    for (const e of elements) {
+      const d = e.data || {};
+      const isEdge = d.source && d.target;
+      const isGroup = d.type === 'group';
+      if (!isEdge && !isGroup && d.group && d.color) {
+        if (!groupBaseColor[d.group]) groupBaseColor[d.group] = d.color;
+      }
+    }
+
+    function darkenColor(hex, amt = 0.25) {
+      if (!hex) return '#64748b';
+      hex = hex.replace('#','');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      const num = parseInt(hex, 16);
+      let r = (num>>16)&255, g = (num>>8)&255, b = num&255;
+      r = Math.max(0, Math.floor(r * (1 - amt)));
+      g = Math.max(0, Math.floor(g * (1 - amt)));
+      b = Math.max(0, Math.floor(b * (1 - amt)));
+      const toH = v => v.toString(16).padStart(2,'0');
+      return `#${toH(r)}${toH(g)}${toH(b)}`;
+    }
+
+    // Ensure group nodes have a darker color and a label
+    for (const e of elements) {
+      const d = e.data || {};
+      if (d.type === 'group') {
+        const base = groupBaseColor[d.label] || '#64748b';
+        d.color = darkenColor(base, 0.25);
+        d.label = d.label || '';
+      }
+    }
+
+    cytoscape.use(window.cytoscapeDagre);
+
+    const cy = cytoscape({
+      container: document.getElementById('cy'),
+      nodeDimensionsIncludeLabels: true,
+      elements,
+      wheelSensitivity: 0.2,
+      boxSelectionEnabled: true,
+      autoungrabify: true,
+      autounselectify: true, // use classes for highlight, not selection
+      style: [
+        { selector: 'node',
+          style: {
+            'shape': 'round-rectangle',
+            'background-color': 'data(color)',
+            'width': 'label',
+            'height': 'label',
+            'padding': '10px',
+            'label': 'data(label)',
+            'font-size': 12,
+            'text-halign': 'center',
+            'text-valign': 'center',
+            'color': '#0f172a'
+          }
+        },
+        { selector: 'node[type = "group"]',
+          style: {
+            'shape': 'round-rectangle',
+            'background-color': 'data(color)',
+            'background-opacity': 0.10,
+            'border-color': 'data(color)',
+            'border-width': 2,
+            'padding': '28px',
+            'label': 'data(label)',
+            'font-weight': '700',
+            'font-size': 20,
+            'text-halign': 'center',
+            'text-valign': 'top',
+            'text-margin-x': 0,
+            'text-margin-y': -20,
+            'color': 'data(color)',
+            'z-compound-depth': 'bottom',
+            'text-background-color': '#fff',
+            'text-background-opacity': 0.85,
+            'text-background-shape': 'round-rectangle',
+            'text-background-padding': 2
+          }
+        },
+        { selector: 'edge',
+          style: {
+            'curve-style': 'bezier',
+            'width': 1,
+            'line-color': '#94a3b8',
+            'target-arrow-color': '#94a3b8',
+            'target-arrow-shape': 'triangle',
+            'arrow-scale': 1,
+            'opacity': 0.95
+          }
+        },
+        /* Highlight classes */
+        { selector: 'node.hl-node',
+          style: { 'border-width': 3, 'border-color': '#60a5fa' } /* light blue box */
+        },
+        { selector: 'edge.hl-edge',
+          style: {
+            'line-color': '#60a5fa',
+            'target-arrow-color': '#60a5fa',
+            'width': 2
+          }
+        }
+      ],
+      layout: {
+        name: 'dagre',
+        rankDir: 'LR',
+        nodeSep: 80,
+        edgeSep: 40,
+        rankSep: 140,
+        spacingFactor: 1.2
+      }
+    });
+
+    cy.once('render', () => { cy.fit(null, 40); });
+
+    // --- Single vs double tap handling + 1-hop highlight ---
+    let tapTimeout = null;
+    let lastTapTime = 0;
+    let lastTapId = null;
+    const DBL_TAP_MS = 300;
+
+    function clearHighlights() {
+      cy.elements('.hl-node').removeClass('hl-node');
+      cy.elements('.hl-edge').removeClass('hl-edge');
+    }
+
+    function highlightOneHop(n) {
+      if (n.data('type') === 'group') return;
+      clearHighlights();
+      n.addClass('hl-node');
+
+      const inEdges  = n.incomers('edge');
+      const outEdges = n.outgoers('edge');
+
+      inEdges.addClass('hl-edge');
+      outEdges.addClass('hl-edge');
+
+      inEdges.sources().filter('[type!="group"]').addClass('hl-node');
+      outEdges.targets().filter('[type!="group"]').addClass('hl-node');
+    }
+
+    // Single click = highlight; Double click = navigate (if url)
+    cy.on('tap', 'node', (evt) => {
+      const n = evt.target;
+      const now = Date.now();
+      const id = n.id();
+
+      if (tapTimeout) { clearTimeout(tapTimeout); tapTimeout = null; }
+
+      if (lastTapId === id && (now - lastTapTime) < DBL_TAP_MS) {
+        lastTapId = null;
+        lastTapTime = 0;
+        const d = n.data();
+        if (d.type !== 'group' && d.url) window.location.href = d.url;
+        return;
+      }
+
+      lastTapId = id;
+      lastTapTime = now;
+      tapTimeout = setTimeout(() => {
+        tapTimeout = null;
+        highlightOneHop(n);
+      }, DBL_TAP_MS);
+    });
+
+    // Click on background clears highlights
+    cy.on('tap', (evt) => { if (evt.target === cy) clearHighlights(); });
+  });
+})();
+</script>
+</body>
+</html>
