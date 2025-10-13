@@ -3,7 +3,7 @@ from pathlib import Path
 import requests
 
 GRAPHQL_URL = "http://localhost:3000/graphql"
-OUT = Path("site/site_data/elements.json")
+OUT = Path("site_data/elements.json")
 
 QUERY = """
 query AssetDocs {

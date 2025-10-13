@@ -3,8 +3,8 @@ import json
 from pathlib import Path
 from html import escape
 
-INPUT = Path("site/site_data/elements.json")
-OUTDIR = Path("site/assets")
+INPUT = Path("site_data/elements.json")
+OUTDIR = Path("assets")
 
 def is_edge(e): return "source" in e.get("data", {}) and "target" in e.get("data", {})
 def is_group(e): return e.get("data", {}).get("type") == "group"
