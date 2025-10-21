@@ -2,8 +2,8 @@
   "elements": [
     {
       "data": {
-        "id": "group__figure_data_prep",
-        "label": "figure_data_prep",
+        "id": "group__analysis",
+        "label": "analysis",
         "type": "group"
       }
     },
@@ -51,6 +51,13 @@
     },
     {
       "data": {
+        "id": "group__usa_analysis",
+        "label": "usa_analysis",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
         "id": "group__usa_intermediate_rasterize_census_places",
         "label": "usa_intermediate_rasterize_census_places",
         "type": "group"
@@ -86,6 +93,27 @@
     },
     {
       "data": {
+        "id": "group__default",
+        "label": "default",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "group__world_analysis",
+        "label": "world_analysis",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "group__world_analysis_size_vs_growth",
+        "label": "world_analysis_size_vs_growth",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
         "id": "group__world_intermediate",
         "label": "world_intermediate",
         "type": "group"
@@ -107,8 +135,8 @@
     },
     {
       "data": {
-        "id": "group__si_figure_data_prep",
-        "label": "si_figure_data_prep",
+        "id": "group__si_analysis",
+        "label": "si_analysis",
         "type": "group"
       }
     },
@@ -121,14 +149,28 @@
     },
     {
       "data": {
+        "id": "group__world_analysis_rank_vs_size",
+        "label": "world_analysis_rank_vs_size",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
+        "id": "group__world_analysis_shares_cities_above_1m",
+        "label": "world_analysis_shares_cities_above_1m",
+        "type": "group"
+      }
+    },
+    {
+      "data": {
         "id": "analysis_parameters",
         "label": "analysis_parameters",
         "description": "dbt seed analysis_parameters\n\n",
         "url": "assets/analysis_parameters.html",
         "columns": [],
-        "group": "figure_data_prep",
+        "group": "analysis",
         "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "parent": "group__analysis"
       }
     },
     {
@@ -505,10 +547,10 @@
     },
     {
       "data": {
-        "id": "si_figure_projection_vs_historical_share_population_cities_above_1m",
-        "label": "si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "id": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
+        "label": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "description": "",
-        "url": "assets/si_figure_projection_vs_historical_share_population_cities_above_1m.html",
+        "url": "assets/si_figure_projection_vs_historical_urb_pop_share_cities_above_1m.html",
         "columns": [],
         "group": "si_figures",
         "color": "#f43f5e",
@@ -572,28 +614,23 @@
         "columns": [
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start of the decade"
           },
           {
             "name": "log_average_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 average growth of the population of the cities over one decade. This average growth is weighted by the population of the cities."
           },
           {
-            "name": "epoch",
-            "type": "text",
-            "description": "see usa_year_epoch"
-          },
-          {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -610,12 +647,12 @@
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "Coordinate reference system = EPSG:5070"
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -633,17 +670,17 @@
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "double precision",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -661,22 +698,22 @@
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "numeric",
+            "type": "?",
             "description": "The population with interpolated values"
           },
           {
             "name": "population_interpolated",
-            "type": "integer",
+            "type": "?",
             "description": "A flag indicating if the population is interpolated or not. 1 if the population is interpolated, 0 otherwise"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -694,22 +731,22 @@
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "numeric",
+            "type": "?",
             "description": ""
           },
           {
             "name": "anomaly_flag",
-            "type": "integer",
+            "type": "?",
             "description": "1 if the population is anomalous, 0 otherwise"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -722,27 +759,27 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The ID of the cluster. This is a concatenation of the year, pixel_threshold, and an integer. This integer is used to assign a unique deterministic cluster_id to each cluster_base. It is obtained by ordering the centroids of clusters from west to east and then from north to south."
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "urban_threshold",
-            "type": "integer",
+            "type": "?",
             "description": "The urban pixel threshold used to classify the pixels as urban or not"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the cluster in Coordinate reference system = EPSG:5070"
           }
         ],
         "group": "usa_intermediate_create_clusters",
-        "color": "#06b6d4",
+        "color": "#eab308",
         "parent": "group__usa_intermediate_create_clusters"
       }
     },
@@ -755,32 +792,32 @@
         "columns": [
           {
             "name": "left_cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The cluster ID of one endpoint of the edge"
           },
           {
             "name": "right_cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The cluster ID of the other endpoint of the edge"
           },
           {
             "name": "y1",
-            "type": "integer",
+            "type": "?",
             "description": "The startpoint of the cluster growth"
           },
           {
             "name": "y2",
-            "type": "integer",
+            "type": "?",
             "description": "The endpoint of the cluster growth"
           },
           {
             "name": "urban_threshold",
-            "type": "integer",
+            "type": "?",
             "description": "The urban pixel threshold used to classify the pixels as urban or not"
           }
         ],
         "group": "usa_intermediate_create_clusters",
-        "color": "#06b6d4",
+        "color": "#eab308",
         "parent": "group__usa_intermediate_create_clusters"
       }
     },
@@ -793,32 +830,32 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The ID of the cluster growth. This is a concatenation of y1, y2 (the years for which the cluster growth is computed), pixel_threshold, and an integer. This integer is used to assign a unique deterministic cluster_id to each cluster_growth. It is obtained by ordering the centroids of clusters from west to east and then from north to south."
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "The startpoint of the cluster growth"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "The endpoint of the cluster growth"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_base_geom"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the cluster in Coordinate reference system = EPSG:5070"
           }
         ],
         "group": "usa_intermediate_create_clusters",
-        "color": "#06b6d4",
+        "color": "#eab308",
         "parent": "group__usa_intermediate_create_clusters"
       }
     },
@@ -831,37 +868,37 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_base_geom"
           },
           {
             "name": "population_y1",
-            "type": "double precision",
+            "type": "?",
             "description": "The population of the cluster growth at the startpoint"
           },
           {
             "name": "population_y2",
-            "type": "double precision",
+            "type": "?",
             "description": "The population of the cluster growth at the endpoint"
           }
         ],
         "group": "usa_intermediate_create_clusters",
-        "color": "#06b6d4",
+        "color": "#eab308",
         "parent": "group__usa_intermediate_create_clusters"
       }
     },
@@ -874,17 +911,17 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
@@ -894,23 +931,23 @@
           },
           {
             "name": "population_y1",
-            "type": "double precision",
+            "type": "?",
             "description": "see usa_cluster_growth_population"
           },
           {
             "name": "population_y2",
-            "type": "double precision",
+            "type": "?",
             "description": "see usa_cluster_growth_population"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "The ID of the analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -947,7 +984,7 @@
           }
         ],
         "group": "usa_intermediate_create_clusters",
-        "color": "#06b6d4",
+        "color": "#eab308",
         "parent": "group__usa_intermediate_create_clusters"
       }
     },
@@ -960,22 +997,22 @@
         "columns": [
           {
             "name": "hist_census_place_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see crosswalk_hist_id_to_hist_census_place_raw"
           },
           {
             "name": "nhgis_census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "distance",
-            "type": "double precision",
+            "type": "?",
             "description": "The distance between the historical census place and the NHGIS census place"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -988,17 +1025,17 @@
         "columns": [
           {
             "name": "census_place_stable_id",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of the stable census place (connected component of the equivalence network)"
           },
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1021,7 +1058,7 @@
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1034,33 +1071,33 @@
         "columns": [
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           },
           {
             "name": "num_cities",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of cities in the dataset"
           },
           {
             "name": "num_years",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of years in the dataset"
           },
           {
             "name": "min_year",
-            "type": "bigint",
+            "type": "?",
             "description": "The earliest year in the dataset"
           },
           {
             "name": "max_year",
-            "type": "bigint",
+            "type": "?",
             "description": "The latest year in the dataset"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1072,17 +1109,17 @@
         "columns": [
           {
             "name": "id",
-            "type": "bigint",
+            "type": "?",
             "description": "see crosswalk_hist_id_to_hist_census_place_raw"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the census place in EPSG:5070"
           }
         ],
         "group": "usa_staging",
-        "color": "#eab308",
+        "color": "#64748b",
         "parent": "group__usa_staging"
       }
     },
@@ -1110,7 +1147,7 @@
           }
         ],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1122,7 +1159,7 @@
         "url": "assets/usa_hist_census_place_migration.html",
         "columns": [],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1134,7 +1171,7 @@
         "url": "assets/usa_hist_census_place_population.html",
         "columns": [],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1147,22 +1184,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "num_appearances",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of times the census place appears in the data"
           },
           {
             "name": "last_appearance",
-            "type": "integer",
+            "type": "?",
             "description": "The last year the census place appears in the data"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1175,17 +1212,17 @@
         "columns": [
           {
             "name": "left_census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of one endpoint of the edge"
           },
           {
             "name": "right_census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of the other endpoint of the edge"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1198,22 +1235,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code, a consistent identifier across time for place points."
           },
           {
             "name": "census_place_name",
-            "type": "text",
+            "type": "?",
             "description": "The name of the census place"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the census place in EPSG:5070"
           }
         ],
         "group": "usa_staging",
-        "color": "#eab308",
+        "color": "#64748b",
         "parent": "group__usa_staging"
       }
     },
@@ -1241,7 +1278,7 @@
           }
         ],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1254,22 +1291,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "numeric",
+            "type": "?",
             "description": "The linked population of the census place. Sum of all migrants that were there in the origin year."
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1282,32 +1319,32 @@
         "columns": [
           {
             "name": "census_place_origin",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_migration"
           },
           {
             "name": "census_place_destination",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_migration"
           },
           {
             "name": "year_origin",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year_destination",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "all_migrants",
-            "type": "numeric",
+            "type": "?",
             "description": "The number of migrants"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1320,32 +1357,32 @@
         "columns": [
           {
             "name": "census_place_origin",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of the census place where the person was living in the origin year"
           },
           {
             "name": "census_place_destination",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of the census place where the person was living in the destination year"
           },
           {
             "name": "year_origin",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year_destination",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "migration_probability",
-            "type": "numeric",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1358,22 +1395,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "neighbor_census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "The NHGISPLACE code of the nearest neighbor"
           },
           {
             "name": "distance",
-            "type": "double precision",
+            "type": "?",
             "description": "The distance between the census place and the nearest neighbor"
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1386,22 +1423,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "numeric",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "usa_intermediate_normalize_hist_data",
-        "color": "#22c55e",
+        "color": "#06b6d4",
         "parent": "group__usa_intermediate_normalize_hist_data"
       }
     },
@@ -1414,22 +1451,22 @@
         "columns": [
           {
             "name": "census_place_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_nhgis_census_place_geom"
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "double precision",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "usa_staging",
-        "color": "#eab308",
+        "color": "#64748b",
         "parent": "group__usa_staging"
       }
     },
@@ -1457,7 +1494,7 @@
           }
         ],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1484,9 +1521,9 @@
             "description": "The average slope of the log-rank vs log-size curve fitted using a penalized B-spline"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1498,28 +1535,28 @@
         "columns": [
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year_base",
-            "type": "bigint",
+            "type": "?",
             "description": "The base year from which the change is computed"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           },
           {
             "name": "rank_size_slope_change",
-            "type": "double precision",
+            "type": "?",
             "description": "The change in the rank-size slope from the base year to the given year."
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1531,33 +1568,33 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "log_population",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the population of the city"
           },
           {
             "name": "log_rank",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the rank of the city"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1569,17 +1606,17 @@
         "columns": [
           {
             "name": "rast",
-            "type": "raster",
+            "type": "?",
             "description": "The raster tiles (each tile contains many cells). Coordinate reference system = EPSG:5070"
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -1602,7 +1639,7 @@
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -1620,7 +1657,7 @@
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -1633,33 +1670,33 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start of the decade"
           },
           {
             "name": "log_population",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 population of the city at the start of the decade"
           },
           {
             "name": "log_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 growth of the city over the decade"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1671,33 +1708,28 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see usa_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start of the decade"
           },
           {
             "name": "normalized_log_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The normalized log growth of the city over the decade computed as the log growth minus the average growth of the population nationwide"
           },
           {
-            "name": "epoch",
-            "type": "text",
-            "description": "see usa_year_epoch"
-          },
-          {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see usa_cluster_growth_population_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "usa_analysis",
+        "color": "#f97316",
+        "parent": "group__usa_analysis"
       }
     },
     {
@@ -1709,22 +1741,22 @@
         "columns": [
           {
             "name": "state_code",
-            "type": "text",
+            "type": "?",
             "description": "The two letter code of the state (e.g. CA, NY)"
           },
           {
             "name": "state_name",
-            "type": "text",
+            "type": "?",
             "description": "The name of the state (e.g. California, New York)"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the state in EPSG:5070"
           }
         ],
         "group": "usa_staging",
-        "color": "#eab308",
+        "color": "#64748b",
         "parent": "group__usa_staging"
       }
     },
@@ -1752,7 +1784,7 @@
           }
         ],
         "group": "usa_raw",
-        "color": "#64748b",
+        "color": "#2563eb",
         "parent": "group__usa_raw"
       }
     },
@@ -1765,12 +1797,12 @@
         "columns": [
           {
             "name": "rast",
-            "type": "raster",
+            "type": "?",
             "description": "Coordinate reference system = EPSG:5070"
           }
         ],
         "group": "usa_intermediate_rasterize_census_places",
-        "color": "#f97316",
+        "color": "#22c55e",
         "parent": "group__usa_intermediate_rasterize_census_places"
       }
     },
@@ -1778,23 +1810,12 @@
       "data": {
         "id": "usa_year_epoch",
         "label": "usa_year_epoch",
-        "description": "We group years into three epochs: 1850-1880, 1900-1940, 1990-2020.\n\n",
+        "description": "",
         "url": "assets/usa_year_epoch.html",
-        "columns": [
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": "The year"
-          },
-          {
-            "name": "epoch",
-            "type": "text",
-            "description": "The epoch of the year: '1850-1880', '1900-1940', '1990-2020'"
-          }
-        ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "columns": [],
+        "group": "default",
+        "color": "#16a34a",
+        "parent": "group__default"
       }
     },
     {
@@ -1806,33 +1827,33 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start year of the decade."
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "log_average_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the average growth of the population of the country across years"
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis",
+        "color": "#f59e0b",
+        "parent": "group__world_analysis"
       }
     },
     {
@@ -1844,23 +1865,23 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "size_growth_slope",
-            "type": "double precision",
+            "type": "?",
             "description": "The average value of the size-growth slope across the observation period (see world_size_growth_slopes_historical for a definition of size-growth slope)"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the country borders in 2019 in the Mollweide projection (EPSG:54009)"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -1872,27 +1893,27 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The ID of the cluster. This is a concatenation of the year, pixel_threshold, and an integer. This integer is used to assign a unique deterministic cluster_id to each cluster_base. It is obtained by ordering the centroids of clusters from west to east and then from north to south."
           },
           {
             "name": "year",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "urban_threshold",
-            "type": "integer",
+            "type": "?",
             "description": "The degree-of-urbanization threshold used to classify the pixels as urban or not. Note that this threshol is exlcusive, meaning that a threshold at 21 means that pixels strictly greater than 21 are urban and pixels less than or equal to 21 are not urban."
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the cluster in Coordinate reference system = EPSG:54009"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -1905,32 +1926,32 @@
         "columns": [
           {
             "name": "left_cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The cluster ID of one endpoint of the edge"
           },
           {
             "name": "right_cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The cluster ID of the other endpoint of the edge"
           },
           {
             "name": "y1",
-            "type": "integer",
+            "type": "?",
             "description": "The startpoint of the cluster growth"
           },
           {
             "name": "y2",
-            "type": "integer",
+            "type": "?",
             "description": "The endpoint of the cluster growth"
           },
           {
             "name": "urban_threshold",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_base_geom"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -1943,37 +1964,37 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_base_geom"
           },
           {
             "name": "gwcode",
-            "type": "integer",
+            "type": "?",
             "description": "see world_country_borders"
           },
           {
             "name": "n_matched_countries",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of countries that the cluster growth intersects with"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -1986,32 +2007,32 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "The ID of the cluster growth. This is a concatenation of y1, y2 (the years for which the cluster growth is computed), pixel_threshold, and an integer. This integer is used to assign a unique deterministic cluster_id to each cluster_growth. It is obtained by ordering the centroids of clusters from west to east and then from north to south."
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "The startpoint of the cluster growth"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "The endpoint of the cluster growth"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_base_geom"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the cluster in Coordinate reference system = EPSG:54009"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -2024,37 +2045,37 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_base_geom"
           },
           {
             "name": "population_y1",
-            "type": "double precision",
+            "type": "?",
             "description": "The population of the cluster growth at the startpoint (y1)"
           },
           {
             "name": "population_y2",
-            "type": "double precision",
+            "type": "?",
             "description": "The population of the cluster growth at the endpoint (y2)"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -2067,42 +2088,42 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "urban_threshold",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_base_geom"
           },
           {
             "name": "population_y1",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_cluster_growth_population"
           },
           {
             "name": "population_y2",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_cluster_growth_population"
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -2115,17 +2136,17 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y1",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "y2",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
@@ -2135,28 +2156,28 @@
           },
           {
             "name": "population_y1",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_cluster_growth_population"
           },
           {
             "name": "population_y2",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_cluster_growth_population"
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "The ID of the analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis",
+        "color": "#f59e0b",
+        "parent": "group__world_analysis"
       }
     },
     {
@@ -2168,42 +2189,42 @@
         "columns": [
           {
             "name": "cntry_name",
-            "type": "text",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gwcode",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gwsyear",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gwsmonth",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gwsday",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gweyear",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gwemonth",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
             "name": "gweday",
-            "type": "integer",
+            "type": "?",
             "description": ""
           },
           {
@@ -2213,7 +2234,7 @@
           }
         ],
         "group": "world_staging",
-        "color": "#16a34a",
+        "color": "#14b8a6",
         "parent": "group__world_staging"
       }
     },
@@ -2226,17 +2247,17 @@
         "columns": [
           {
             "name": "gwcode",
-            "type": "integer",
+            "type": "?",
             "description": "see world_country_borders"
           },
           {
             "name": "geom",
-            "type": "geometry",
+            "type": "?",
             "description": "The geometry of the country borders in 2019 in Coordinate reference system = EPSG:54009"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -2294,7 +2315,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -2322,7 +2343,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -2360,7 +2381,7 @@
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -2383,7 +2404,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -2396,38 +2417,38 @@
         "columns": [
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "num_cities",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of cities in the dataset"
           },
           {
             "name": "num_countries",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of countries in the dataset"
           },
           {
             "name": "num_years",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of years in the dataset"
           },
           {
             "name": "min_year",
-            "type": "bigint",
+            "type": "?",
             "description": "The earliest year in the dataset"
           },
           {
             "name": "max_year",
-            "type": "bigint",
+            "type": "?",
             "description": "The latest year in the dataset"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis",
+        "color": "#f59e0b",
+        "parent": "group__world_analysis"
       }
     },
     {
@@ -2458,9 +2479,9 @@
             "description": "The maximum residual from the line fit through an OLS regression"
           }
         ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -2501,9 +2522,9 @@
             "description": "Whether the null hypothesis of linearity is rejected using a threshold of 0.05"
           }
         ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -2515,17 +2536,17 @@
         "columns": [
           {
             "name": "description",
-            "type": "text",
+            "type": "?",
             "description": "The description of the statistic computed"
           },
           {
             "name": "value",
-            "type": "double precision",
+            "type": "?",
             "description": "The value of the statistic computed"
           }
         ],
         "group": "paper_stats",
-        "color": "#8b5cf6",
+        "color": "#22c55e",
         "parent": "group__paper_stats"
       }
     },
@@ -2538,27 +2559,27 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "The world bank code of the country"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "population",
-            "type": "double precision",
+            "type": "?",
             "description": "The population of the country"
           },
           {
             "name": "projection",
-            "type": "boolean",
+            "type": "?",
             "description": "Whether the population is a projection or not"
           }
         ],
         "group": "world_staging",
-        "color": "#16a34a",
+        "color": "#14b8a6",
         "parent": "group__world_staging"
       }
     },
@@ -2591,150 +2612,8 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m",
-        "label": "world_population_share_cities_above_1m",
-        "description": "The union of the historical and projected data. Historical data is before 2025 (2025 included), and projections are after 2025 (2025 excluded).\n\n",
-        "url": "assets/world_population_share_cities_above_1m.html",
-        "columns": [
-          {
-            "name": "country",
-            "type": "text",
-            "description": "see world_cluster_growth_geocoding"
-          },
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "analysis_id",
-            "type": "bigint",
-            "description": "see world_cluster_growth_population_country_analysis"
-          },
-          {
-            "name": "urban_population_share_cities_above_one_million",
-            "type": "double precision",
-            "description": "The urban population share of cities above 1 million"
-          },
-          {
-            "name": "urban_population",
-            "type": "double precision",
-            "description": "see world_urban_population"
-          },
-          {
-            "name": "urban_population_share_group",
-            "type": "text",
-            "description": "see world_urbanization_groups"
-          }
-        ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_historical",
-        "label": "world_population_share_cities_above_1m_historical",
-        "description": "The urban (note urban not total!) population share of cities above 1 million. This is computed from the population data by summing the total population and that of cities above 1 million.\n\n",
-        "url": "assets/world_population_share_cities_above_1m_historical.html",
-        "columns": [
-          {
-            "name": "country",
-            "type": "text",
-            "description": "see world_cluster_growth_geocoding"
-          },
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "analysis_id",
-            "type": "integer",
-            "description": "see world_cluster_growth_population_country_analysis"
-          },
-          {
-            "name": "urban_population_share_cities_above_one_million",
-            "type": "double precision",
-            "description": "The urban population share of cities above 1 million"
-          }
-        ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_projections",
-        "label": "world_population_share_cities_above_1m_projections",
-        "description": "The urban population share of cities above 1 million projected into the future. The projections are based on a simple equation relating the shares to the rank-size slopes: s = (x_max^{1-alpha} - z^{1-alpha}) / (x_max^{1-alpha} - x_min^{1-alpha}) where x_max, x_min are upper and lower bounds of the urban population, z is 1 million, and alpha is the zipf exponent (1 / rank_size_slope). To compute these projections we set x_min = 5000, z = 1 million, and alpha = 1 / rank_size_slope. We set x_max = omega * urban_population, where omega is a free parameter. We tune omega in the marcro get_optimal_omegas_population_share_cities_above_1m_projections.\n\n",
-        "url": "assets/world_population_share_cities_above_1m_projections.html",
-        "columns": [
-          {
-            "name": "country",
-            "type": "text",
-            "description": "see world_cluster_growth_geocoding"
-          },
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "analysis_id",
-            "type": "bigint",
-            "description": "see world_cluster_growth_population_country_analysis"
-          },
-          {
-            "name": "urban_population_share_cities_above_one_million",
-            "type": "double precision",
-            "description": "The urban population share of cities above 1 million projected with the above method."
-          }
-        ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_projections_ols",
-        "label": "world_population_share_cities_above_1m_projections_ols",
-        "description": "The population share of cities with a population above 1 million calculated using our projection method. This is estimated in the same way as world_population_share_cities_above_1m_projections (i.e., with the equation s = (x_max^{1-alpha} - z^{1-alpha}) / (x_max^{1-alpha} - x_min^{1-alpha})). However, this table uses OLS estimates of the rank-size slope rather than spline based ones. We do not calculate future values of the rank size slope because the main focus here is to compare whether spline based or OLS based estimates are better at reproducing historical data.\n\n",
-        "url": "assets/world_population_share_cities_above_1m_projections_ols.html",
-        "columns": [
-          {
-            "name": "country",
-            "type": "text",
-            "description": "see world_cluster_growth_geocoding"
-          },
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "analysis_id",
-            "type": "bigint",
-            "description": "see world_cluster_growth_population_analysis"
-          },
-          {
-            "name": "population_share_cities_above_1m",
-            "type": "?",
-            "description": "The population share of cities with a population above 1 million projected using the method described in world_population_share_cities_above_1m_projections, but using OLS estimates of the rank-size slope rather than spline based ones."
-          }
-        ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
       }
     },
     {
@@ -2746,43 +2625,43 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "rank_size_slope",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_rank_size_slopes_historical or world_rank_size_slopes_projections"
           },
           {
             "name": "is_projection",
-            "type": "boolean",
+            "type": "?",
             "description": "Whether the rank-size slope is a projection or not"
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           },
           {
             "name": "urban_population_share_group",
-            "type": "text",
+            "type": "?",
             "description": "see world_urbanization_groups"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -2794,33 +2673,33 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year_base",
-            "type": "bigint",
+            "type": "?",
             "description": "The base year from which we measure the change in the rank-size slope"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "rank_size_slope_change",
-            "type": "double precision",
+            "type": "?",
             "description": "The change in the rank-size slope between the base year and the given year"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -2832,91 +2711,43 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year_since_1975",
-            "type": "bigint",
+            "type": "?",
             "description": "The number of years since 1975"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           },
           {
             "name": "rank_size_slope_change",
-            "type": "double precision",
+            "type": "?",
             "description": "The change in the rank-size slope between 1975 and 2025 with base year 1975"
           },
           {
             "name": "urban_population_share_group",
-            "type": "text",
+            "type": "?",
             "description": "see world_urbanization_groups"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_change_2025_2075",
-        "label": "world_rank_size_slopes_change_2025_2075",
-        "description": "The projected change in the rank-size slope between 2025 and 2075, with base year 2025.\n\n",
-        "url": "assets/world_rank_size_slopes_change_2025_2075.html",
-        "columns": [
-          {
-            "name": "country",
-            "type": "text",
-            "description": "see world_cluster_growth_geocoding"
-          },
-          {
-            "name": "year",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "year_since_2025",
-            "type": "bigint",
-            "description": "The number of years since 2025"
-          },
-          {
-            "name": "analysis_id",
-            "type": "bigint",
-            "description": ""
-          },
-          {
-            "name": "region",
-            "type": "text",
-            "description": "see world_country_region"
-          },
-          {
-            "name": "rank_size_slope_change",
-            "type": "double precision",
-            "description": "The change in the rank-size slope between 2025 and 2075 with base year 2025"
-          },
-          {
-            "name": "urban_population_share_group",
-            "type": "text",
-            "description": "see world_urbanization_groups"
-          }
-        ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -2928,38 +2759,38 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "This start year of the decade"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           },
           {
             "name": "rank_size_slope_decade_change",
-            "type": "double precision",
+            "type": "?",
             "description": "The change in the rank-size slope between the start end end of the decade"
           },
           {
             "name": "urban_population_share_group",
-            "type": "text",
+            "type": "?",
             "description": "see world_urbanization_groups"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -2990,9 +2821,9 @@
             "description": "The average slope of the log-rank vs log-size curve fitted using a penalized B-spline"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -3023,9 +2854,9 @@
             "description": "The coefficient of and OLS regression of log-rank vs log-size"
           }
         ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -3037,28 +2868,28 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start of the decade"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "rank_size_slope_decade_change",
-            "type": "double precision",
+            "type": "?",
             "description": "The change in the rank-size slope (estimated with OLS) from the start of the decade to the end of the decade"
           }
         ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -3070,28 +2901,28 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "rank_size_slope",
-            "type": "double precision",
+            "type": "?",
             "description": "The average slope of the log-rank vs log-size curve calculated with out projection method"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -3103,38 +2934,38 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "log_population",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the population of the city"
           },
           {
             "name": "log_rank",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the rank of the city"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_rank_vs_size",
+        "color": "#06b6d4",
+        "parent": "group__world_analysis_rank_vs_size"
       }
     },
     {
@@ -3156,7 +2987,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -3179,7 +3010,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -3202,7 +3033,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -3225,7 +3056,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -3277,9 +3108,9 @@
             "description": "The upper confidence interval of the coefficient of the region with urbanization controls"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3310,9 +3141,9 @@
             "description": "The average slope of the log-size vs log-growth curve fitted using a penalized B-spline"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3343,9 +3174,9 @@
             "description": "The coefficient of and OLS regression of log-size vs log-growth"
           }
         ],
-        "group": "si_figure_data_prep",
-        "color": "#ef4444",
-        "parent": "group__si_figure_data_prep"
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -3357,33 +3188,33 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_size_growth_slopes_historical"
           },
           {
             "name": "analysis_id",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "size_growth_slope",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_size_growth_slopes_historical"
           },
           {
             "name": "urban_population_share",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_urbanization"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3414,9 +3245,9 @@
             "description": "The projection of the size growth slope based on the urban population share."
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3428,38 +3259,38 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "The start year of the decade."
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "log_population",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the population of the cluster growth at the start of the decade"
           },
           {
             "name": "log_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the growth of the population growth of the cluster between the start of the decade and the end of the decade"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3471,43 +3302,43 @@
         "columns": [
           {
             "name": "cluster_id",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geom"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_size_vs_growth"
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
             "name": "log_population",
-            "type": "double precision",
+            "type": "?",
             "description": "see world_size_vs_growth"
           },
           {
             "name": "normalized_log_growth",
-            "type": "double precision",
+            "type": "?",
             "description": "The log10 of the growth of the population of the cluster growth at the start of the decade, normalized by the average growth of the population of the country"
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
       }
     },
     {
@@ -3524,17 +3355,17 @@
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": "see world_size_vs_growth"
           },
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "see world_cluster_growth_geocoding"
           },
           {
             "name": "analysis_id",
-            "type": "integer",
+            "type": "?",
             "description": "see world_cluster_growth_population_country_analysis"
           },
           {
@@ -3549,18 +3380,286 @@
           },
           {
             "name": "region",
-            "type": "text",
+            "type": "?",
             "description": "see world_country_region"
           },
           {
             "name": "city_group",
-            "type": "text",
+            "type": "?",
             "description": "The group of the city: 'above_1m', 'below_1m', or 'largest_city'"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis_size_vs_growth",
+        "color": "#ef4444",
+        "parent": "group__world_analysis_size_vs_growth"
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m",
+        "label": "world_tot_pop_share_cities_above_1m",
+        "description": "dbt model world_tot_pop_share_cities_above_1m\n\n",
+        "url": "assets/world_tot_pop_share_cities_above_1m.html",
+        "columns": [],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "label": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "description": "The total population share of cities above 1 million projected into the future using past extrapolation. The basic idea is to use the average size growth slope over the period 1975-2025 to project the rank-size slopes into the future. And then use these projected rank size slopes with the same method as world_urb_pop_share_cities_above_1m_projections to project the urban population share of cities above 1 million into the future. Finally, we multiply the projected share of the urban population in cities above 1 million by the projected urban population share overall to get projected share of the TOTAL population in cities above 1 million.\n\n",
+        "url": "assets/world_tot_pop_share_cities_above_1m_projections_extr.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "total_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The total population share of cities above 1 million projected using extrapolation (see above description)."
+          },
+          {
+            "name": "population",
+            "type": "?",
+            "description": "see world_population"
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "label": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "description": "The total population share of cities above 1 million projected into the future using fixed increasing return. Same procedure as in world_tot_pop_share_cities_above_1m_projections_extr, but we use a fixed size growth slope of 0.02.\n\n",
+        "url": "assets/world_tot_pop_share_cities_above_1m_projections_inc_returns.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "total_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The total population share of cities above 1 million projected using fixed increasing return (see above description)."
+          },
+          {
+            "name": "population",
+            "type": "?",
+            "description": "see world_population"
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "label": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "description": "The total population share of cities above 1 million projected into the future using proportional growth. Same procedure as in world_tot_pop_share_cities_above_1m_projections_extr, but we use a fixed size growth slope of 0.00 (so proportional growth).\n\n",
+        "url": "assets/world_tot_pop_share_cities_above_1m_projections_prop_growth.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "total_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The total population share of cities above 1 million projected using proportional growth (see above description)."
+          },
+          {
+            "name": "population",
+            "type": "?",
+            "description": "see world_population"
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m",
+        "label": "world_urb_pop_share_cities_above_1m",
+        "description": "The union of the historical and projected data. Historical data is before 2025 (2025 included), and projections are after 2025 (2025 excluded).\n\n",
+        "url": "assets/world_urb_pop_share_cities_above_1m.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "urban_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "see world_urb_pop_share_cities_above_1m_historical and world_urb_pop_share_cities_above_1m_projections"
+          },
+          {
+            "name": "urban_population",
+            "type": "?",
+            "description": "see world_urban_population"
+          },
+          {
+            "name": "urban_population_share_group",
+            "type": "?",
+            "description": "see world_urbanization_groups"
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical",
+        "label": "world_urb_pop_share_cities_above_1m_historical",
+        "description": "The urban (note urban not total!) population share of cities above 1 million. This is computed from the population data by summing the total population and that of cities above 1 million.\n\n",
+        "url": "assets/world_urb_pop_share_cities_above_1m_historical.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "urban_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The urban population share of cities above 1 million"
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_projections",
+        "label": "world_urb_pop_share_cities_above_1m_projections",
+        "description": "The urban population share of cities above 1 million projected into the future. The projections are based on a simple equation relating the shares to the rank-size slopes: s = (x_max^{1-alpha} - z^{1-alpha}) / (x_max^{1-alpha} - x_min^{1-alpha}) where x_max, x_min are upper and lower bounds of the urban population, z is 1 million, and alpha is the zipf exponent (1 / rank_size_slope). To compute these projections we set x_min = 5000, z = 1 million, and alpha = 1 / rank_size_slope. We set x_max = omega * urban_population, where omega is a free parameter. We tune omega in the marcro get_optimal_omegas_population_share_cities_above_1m_projections.\n\n",
+        "url": "assets/world_urb_pop_share_cities_above_1m_projections.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_country_analysis"
+          },
+          {
+            "name": "urban_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The urban population share of cities above 1 million projected with the above method."
+          }
+        ],
+        "group": "world_analysis_shares_cities_above_1m",
+        "color": "#eab308",
+        "parent": "group__world_analysis_shares_cities_above_1m"
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "label": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "description": "The population share of cities with a population above 1 million calculated using our projection method. This is estimated in the same way as world_population_share_cities_above_1m_projections (i.e., with the equation s = (x_max^{1-alpha} - z^{1-alpha}) / (x_max^{1-alpha} - x_min^{1-alpha})). However, this table uses OLS estimates of the rank-size slope rather than spline based ones. We do not calculate future values of the rank size slope because the main focus here is to compare whether spline based or OLS based estimates are better at reproducing historical data.\n\n",
+        "url": "assets/world_urb_pop_share_cities_above_1m_projections_ols.html",
+        "columns": [
+          {
+            "name": "country",
+            "type": "?",
+            "description": "see world_cluster_growth_geocoding"
+          },
+          {
+            "name": "year",
+            "type": "?",
+            "description": ""
+          },
+          {
+            "name": "analysis_id",
+            "type": "?",
+            "description": "see world_cluster_growth_population_analysis"
+          },
+          {
+            "name": "urban_population_share_cities_above_one_million",
+            "type": "?",
+            "description": "The population share of cities with a population above 1 million projected using the method described in world_urb_pop_share_cities_above_1m_projections, but using OLS estimates of the rank-size slope rather than spline based ones."
+          }
+        ],
+        "group": "si_analysis",
+        "color": "#f97316",
+        "parent": "group__si_analysis"
       }
     },
     {
@@ -3572,22 +3671,22 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "World bank code of the country"
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "urban_population",
-            "type": "double precision",
+            "type": "?",
             "description": "The urban population of the country"
           }
         ],
         "group": "world_intermediate",
-        "color": "#2563eb",
+        "color": "#8b5cf6",
         "parent": "group__world_intermediate"
       }
     },
@@ -3600,22 +3699,22 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": ""
           },
           {
             "name": "year",
-            "type": "bigint",
+            "type": "?",
             "description": ""
           },
           {
             "name": "urban_population_share",
-            "type": "double precision",
+            "type": "?",
             "description": ""
           }
         ],
         "group": "world_staging",
-        "color": "#16a34a",
+        "color": "#14b8a6",
         "parent": "group__world_staging"
       }
     },
@@ -3628,18 +3727,18 @@
         "columns": [
           {
             "name": "country",
-            "type": "text",
+            "type": "?",
             "description": "The country code from world bank"
           },
           {
             "name": "urban_population_share_group",
-            "type": "text",
+            "type": "?",
             "description": "The urban population share group of the country: '0-60%' or '60-100%'"
           }
         ],
-        "group": "figure_data_prep",
-        "color": "#2563eb",
-        "parent": "group__figure_data_prep"
+        "group": "world_analysis",
+        "color": "#f59e0b",
+        "parent": "group__world_analysis"
       }
     },
     {
@@ -3666,7 +3765,7 @@
           }
         ],
         "group": "world_raw",
-        "color": "#f59e0b",
+        "color": "#f43f5e",
         "parent": "group__world_raw"
       }
     },
@@ -3712,14 +3811,6 @@
     },
     {
       "data": {
-        "id": "world_size_vs_growth_normalized->figure_1_plots",
-        "source": "world_size_vs_growth_normalized",
-        "target": "figure_1_plots",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
         "id": "world_size_vs_growth_normalized_by_group->figure_1_plots",
         "source": "world_size_vs_growth_normalized_by_group",
         "target": "figure_1_plots",
@@ -3736,6 +3827,22 @@
     },
     {
       "data": {
+        "id": "world_size_vs_growth_normalized->figure_1_plots",
+        "source": "world_size_vs_growth_normalized",
+        "target": "figure_1_plots",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_size_vs_growth_normalized->figure_2",
+        "source": "world_size_vs_growth_normalized",
+        "target": "figure_2",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
         "id": "usa_size_vs_growth_normalized->figure_2",
         "source": "usa_size_vs_growth_normalized",
         "target": "figure_2",
@@ -3744,16 +3851,16 @@
     },
     {
       "data": {
-        "id": "world_region_regression_with_urbanization_controls->figure_2",
-        "source": "world_region_regression_with_urbanization_controls",
+        "id": "usa_size_vs_growth->figure_2",
+        "source": "usa_size_vs_growth",
         "target": "figure_2",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_size_vs_growth->figure_2",
-        "source": "world_size_vs_growth",
+        "id": "world_rank_size_slopes_change_1975_2025->figure_2",
+        "source": "world_rank_size_slopes_change_1975_2025",
         "target": "figure_2",
         "cross": 1
       }
@@ -3776,40 +3883,88 @@
     },
     {
       "data": {
-        "id": "usa_size_vs_growth->figure_2",
-        "source": "usa_size_vs_growth",
+        "id": "usa_rank_size_slopes_change->figure_2",
+        "source": "usa_rank_size_slopes_change",
         "target": "figure_2",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m->figure_3",
-        "source": "world_population_share_cities_above_1m",
-        "target": "figure_3",
+        "id": "world_size_vs_growth->figure_2",
+        "source": "world_size_vs_growth",
+        "target": "figure_2",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_rank_size_slopes_change->figure_3",
+        "id": "world_average_growth->figure_2",
+        "source": "world_average_growth",
+        "target": "figure_2",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_change->figure_2",
         "source": "world_rank_size_slopes_change",
+        "target": "figure_2",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m->figure_3",
+        "source": "world_urb_pop_share_cities_above_1m",
         "target": "figure_3",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_rank_size_slopes_change_1975_2025->figure_3",
-        "source": "world_rank_size_slopes_change_1975_2025",
+        "id": "world_tot_pop_share_cities_above_1m_projections_prop_growth->figure_3",
+        "source": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
         "target": "figure_3",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_rank_size_slopes_change_2025_2075->figure_3",
-        "source": "world_rank_size_slopes_change_2025_2075",
+        "id": "world_rank_size_slopes->figure_3",
+        "source": "world_rank_size_slopes",
+        "target": "figure_3",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m->figure_3",
+        "source": "world_tot_pop_share_cities_above_1m",
+        "target": "figure_3",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m_projections_extr->figure_3",
+        "source": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "target": "figure_3",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_tot_pop_share_cities_above_1m_projections_inc_returns->figure_3",
+        "source": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "target": "figure_3",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_region_regression_with_urbanization_controls->figure_3",
+        "source": "world_region_regression_with_urbanization_controls",
         "target": "figure_3",
         "cross": 1
       }
@@ -3824,16 +3979,24 @@
     },
     {
       "data": {
-        "id": "ipums_full_count_clean->ipums_full_count_census_place_id",
-        "source": "ipums_full_count_clean",
-        "target": "ipums_full_count_census_place_id",
-        "cross": 0
+        "id": "world_rank_size_slopes_change->figure_3",
+        "source": "world_rank_size_slopes_change",
+        "target": "figure_3",
+        "cross": 1
       }
     },
     {
       "data": {
         "id": "crosswalk_hist_id_to_hist_census_place_clean->ipums_full_count_census_place_id",
         "source": "crosswalk_hist_id_to_hist_census_place_clean",
+        "target": "ipums_full_count_census_place_id",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "ipums_full_count_clean->ipums_full_count_census_place_id",
+        "source": "ipums_full_count_clean",
         "target": "ipums_full_count_census_place_id",
         "cross": 0
       }
@@ -3896,32 +4059,16 @@
     },
     {
       "data": {
-        "id": "world_size_growth_slopes_historical_ols->si_figure_equation_correlation",
-        "source": "world_size_growth_slopes_historical_ols",
+        "id": "world_urb_pop_share_cities_above_1m_projections->si_figure_equation_correlation",
+        "source": "world_urb_pop_share_cities_above_1m_projections",
         "target": "si_figure_equation_correlation",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_rank_size_slopes_ols_decade_change->si_figure_equation_correlation",
-        "source": "world_rank_size_slopes_ols_decade_change",
-        "target": "si_figure_equation_correlation",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_decade_change->si_figure_equation_correlation",
-        "source": "world_rank_size_slopes_decade_change",
-        "target": "si_figure_equation_correlation",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_projections_ols->si_figure_equation_correlation",
-        "source": "world_population_share_cities_above_1m_projections_ols",
+        "id": "world_urb_pop_share_cities_above_1m_projections_ols->si_figure_equation_correlation",
+        "source": "world_urb_pop_share_cities_above_1m_projections_ols",
         "target": "si_figure_equation_correlation",
         "cross": 1
       }
@@ -3936,32 +4083,40 @@
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m_historical->si_figure_equation_correlation",
-        "source": "world_population_share_cities_above_1m_historical",
+        "id": "world_size_growth_slopes_historical_ols->si_figure_equation_correlation",
+        "source": "world_size_growth_slopes_historical_ols",
         "target": "si_figure_equation_correlation",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m_projections->si_figure_equation_correlation",
-        "source": "world_population_share_cities_above_1m_projections",
+        "id": "world_rank_size_slopes_decade_change->si_figure_equation_correlation",
+        "source": "world_rank_size_slopes_decade_change",
         "target": "si_figure_equation_correlation",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_linearity_test_size_vs_growth->si_figure_linear_rigidity",
-        "source": "world_linearity_test_size_vs_growth",
-        "target": "si_figure_linear_rigidity",
+        "id": "world_urb_pop_share_cities_above_1m_historical->si_figure_equation_correlation",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "si_figure_equation_correlation",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_size_vs_growth->si_figure_linear_rigidity",
-        "source": "world_size_vs_growth",
+        "id": "world_rank_size_slopes_ols_decade_change->si_figure_equation_correlation",
+        "source": "world_rank_size_slopes_ols_decade_change",
+        "target": "si_figure_equation_correlation",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_size_growth_slopes_historical->si_figure_linear_rigidity",
+        "source": "world_size_growth_slopes_historical",
         "target": "si_figure_linear_rigidity",
         "cross": 1
       }
@@ -3976,16 +4131,16 @@
     },
     {
       "data": {
-        "id": "world_size_growth_slopes_historical->si_figure_linear_rigidity",
-        "source": "world_size_growth_slopes_historical",
+        "id": "world_size_vs_growth->si_figure_linear_rigidity",
+        "source": "world_size_vs_growth",
         "target": "si_figure_linear_rigidity",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_linearity_test_rank_vs_size->si_figure_linear_rigidity",
-        "source": "world_linearity_test_rank_vs_size",
+        "id": "world_linearity_test_size_vs_growth->si_figure_linear_rigidity",
+        "source": "world_linearity_test_size_vs_growth",
         "target": "si_figure_linear_rigidity",
         "cross": 1
       }
@@ -4000,40 +4155,48 @@
     },
     {
       "data": {
-        "id": "world_country_region->si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "id": "world_linearity_test_rank_vs_size->si_figure_linear_rigidity",
+        "source": "world_linearity_test_rank_vs_size",
+        "target": "si_figure_linear_rigidity",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "source": "world_country_region",
-        "target": "si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "target": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m_historical->si_figure_projection_vs_historical_share_population_cities_above_1m",
-        "source": "world_population_share_cities_above_1m_historical",
-        "target": "si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "id": "world_urb_pop_share_cities_above_1m_historical->si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m_projections->si_figure_projection_vs_historical_share_population_cities_above_1m",
-        "source": "world_population_share_cities_above_1m_projections",
-        "target": "si_figure_projection_vs_historical_share_population_cities_above_1m",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_urban_population->si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "id": "world_urban_population->si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "source": "world_urban_population",
-        "target": "si_figure_projection_vs_historical_share_population_cities_above_1m",
+        "target": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "usa_average_growth->si_figure_usa_robustness",
-        "source": "usa_average_growth",
+        "id": "world_urb_pop_share_cities_above_1m_projections->si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
+        "source": "world_urb_pop_share_cities_above_1m_projections",
+        "target": "si_figure_projection_vs_historical_urb_pop_share_cities_above_1m",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "usa_size_vs_growth->si_figure_usa_robustness",
+        "source": "usa_size_vs_growth",
         "target": "si_figure_usa_robustness",
         "cross": 1
       }
@@ -4056,8 +4219,8 @@
     },
     {
       "data": {
-        "id": "usa_size_vs_growth->si_figure_usa_robustness",
-        "source": "usa_size_vs_growth",
+        "id": "usa_average_growth->si_figure_usa_robustness",
+        "source": "usa_average_growth",
         "target": "si_figure_usa_robustness",
         "cross": 1
       }
@@ -4104,14 +4267,6 @@
     },
     {
       "data": {
-        "id": "usa_year_epoch->usa_average_growth",
-        "source": "usa_year_epoch",
-        "target": "usa_average_growth",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
         "id": "usa_cluster_growth_population_analysis->usa_average_growth",
         "source": "usa_cluster_growth_population_analysis",
         "target": "usa_average_growth",
@@ -4136,16 +4291,16 @@
     },
     {
       "data": {
-        "id": "usa_census_place_stable_population_interpolated->usa_census_place_stable_population",
-        "source": "usa_census_place_stable_population_interpolated",
+        "id": "usa_nhgis_census_place_population_1990_2020->usa_census_place_stable_population",
+        "source": "usa_nhgis_census_place_population_1990_2020",
         "target": "usa_census_place_stable_population",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "usa_nhgis_census_place_population_1990_2020->usa_census_place_stable_population",
-        "source": "usa_nhgis_census_place_population_1990_2020",
+        "id": "usa_census_place_stable_population_interpolated->usa_census_place_stable_population",
+        "source": "usa_census_place_stable_population_interpolated",
         "target": "usa_census_place_stable_population",
         "cross": 1
       }
@@ -4208,10 +4363,10 @@
     },
     {
       "data": {
-        "id": "usa_census_place_stable_geom->usa_cluster_growth_population",
-        "source": "usa_census_place_stable_geom",
+        "id": "usa_cluster_growth_geom->usa_cluster_growth_population",
+        "source": "usa_cluster_growth_geom",
         "target": "usa_cluster_growth_population",
-        "cross": 1
+        "cross": 0
       }
     },
     {
@@ -4224,10 +4379,10 @@
     },
     {
       "data": {
-        "id": "usa_cluster_growth_geom->usa_cluster_growth_population",
-        "source": "usa_cluster_growth_geom",
+        "id": "usa_census_place_stable_geom->usa_cluster_growth_population",
+        "source": "usa_census_place_stable_geom",
         "target": "usa_cluster_growth_population",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -4235,7 +4390,7 @@
         "id": "analysis_parameters->usa_cluster_growth_population_analysis",
         "source": "analysis_parameters",
         "target": "usa_cluster_growth_population_analysis",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -4256,14 +4411,6 @@
     },
     {
       "data": {
-        "id": "usa_hist_census_place_geom->usa_crosswalk_hist_census_place_to_nhgis_census_place",
-        "source": "usa_hist_census_place_geom",
-        "target": "usa_crosswalk_hist_census_place_to_nhgis_census_place",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
         "id": "usa_nhgis_census_place_geom->usa_crosswalk_hist_census_place_to_nhgis_census_place",
         "source": "usa_nhgis_census_place_geom",
         "target": "usa_crosswalk_hist_census_place_to_nhgis_census_place",
@@ -4272,16 +4419,24 @@
     },
     {
       "data": {
-        "id": "usa_crosswalk_nhgis_census_place_to_connected_component->usa_crosswalk_nhgis_census_place_to_census_place_stable",
-        "source": "usa_crosswalk_nhgis_census_place_to_connected_component",
-        "target": "usa_crosswalk_nhgis_census_place_to_census_place_stable",
-        "cross": 0
+        "id": "usa_hist_census_place_geom->usa_crosswalk_hist_census_place_to_nhgis_census_place",
+        "source": "usa_hist_census_place_geom",
+        "target": "usa_crosswalk_hist_census_place_to_nhgis_census_place",
+        "cross": 1
       }
     },
     {
       "data": {
         "id": "usa_nhgis_census_place_population->usa_crosswalk_nhgis_census_place_to_census_place_stable",
         "source": "usa_nhgis_census_place_population",
+        "target": "usa_crosswalk_nhgis_census_place_to_census_place_stable",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "usa_crosswalk_nhgis_census_place_to_connected_component->usa_crosswalk_nhgis_census_place_to_census_place_stable",
+        "source": "usa_crosswalk_nhgis_census_place_to_connected_component",
         "target": "usa_crosswalk_nhgis_census_place_to_census_place_stable",
         "cross": 0
       }
@@ -4344,8 +4499,8 @@
     },
     {
       "data": {
-        "id": "usa_nhgis_census_place_migration_probability->usa_nhgis_census_place_equivalence_network",
-        "source": "usa_nhgis_census_place_migration_probability",
+        "id": "usa_nhgis_census_place_nearest_neighbors->usa_nhgis_census_place_equivalence_network",
+        "source": "usa_nhgis_census_place_nearest_neighbors",
         "target": "usa_nhgis_census_place_equivalence_network",
         "cross": 0
       }
@@ -4368,8 +4523,8 @@
     },
     {
       "data": {
-        "id": "usa_nhgis_census_place_nearest_neighbors->usa_nhgis_census_place_equivalence_network",
-        "source": "usa_nhgis_census_place_nearest_neighbors",
+        "id": "usa_nhgis_census_place_migration_probability->usa_nhgis_census_place_equivalence_network",
+        "source": "usa_nhgis_census_place_migration_probability",
         "target": "usa_nhgis_census_place_equivalence_network",
         "cross": 0
       }
@@ -4400,14 +4555,6 @@
     },
     {
       "data": {
-        "id": "usa_hist_census_place_migration->usa_nhgis_census_place_migration",
-        "source": "usa_hist_census_place_migration",
-        "target": "usa_nhgis_census_place_migration",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
         "id": "usa_crosswalk_hist_census_place_to_nhgis_census_place->usa_nhgis_census_place_migration",
         "source": "usa_crosswalk_hist_census_place_to_nhgis_census_place",
         "target": "usa_nhgis_census_place_migration",
@@ -4416,16 +4563,24 @@
     },
     {
       "data": {
-        "id": "usa_nhgis_census_place_linked_population->usa_nhgis_census_place_migration_probability",
-        "source": "usa_nhgis_census_place_linked_population",
-        "target": "usa_nhgis_census_place_migration_probability",
-        "cross": 0
+        "id": "usa_hist_census_place_migration->usa_nhgis_census_place_migration",
+        "source": "usa_hist_census_place_migration",
+        "target": "usa_nhgis_census_place_migration",
+        "cross": 1
       }
     },
     {
       "data": {
         "id": "usa_nhgis_census_place_migration->usa_nhgis_census_place_migration_probability",
         "source": "usa_nhgis_census_place_migration",
+        "target": "usa_nhgis_census_place_migration_probability",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "usa_nhgis_census_place_linked_population->usa_nhgis_census_place_migration_probability",
+        "source": "usa_nhgis_census_place_linked_population",
         "target": "usa_nhgis_census_place_migration_probability",
         "cross": 0
       }
@@ -4440,14 +4595,6 @@
     },
     {
       "data": {
-        "id": "usa_hist_census_place_population->usa_nhgis_census_place_population",
-        "source": "usa_hist_census_place_population",
-        "target": "usa_nhgis_census_place_population",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
         "id": "usa_crosswalk_hist_census_place_to_nhgis_census_place->usa_nhgis_census_place_population",
         "source": "usa_crosswalk_hist_census_place_to_nhgis_census_place",
         "target": "usa_nhgis_census_place_population",
@@ -4456,9 +4603,9 @@
     },
     {
       "data": {
-        "id": "usa_nhgis_census_place_geom_all_years_raw->usa_nhgis_census_place_population_1990_2020",
-        "source": "usa_nhgis_census_place_geom_all_years_raw",
-        "target": "usa_nhgis_census_place_population_1990_2020",
+        "id": "usa_hist_census_place_population->usa_nhgis_census_place_population",
+        "source": "usa_hist_census_place_population",
+        "target": "usa_nhgis_census_place_population",
         "cross": 1
       }
     },
@@ -4466,6 +4613,14 @@
       "data": {
         "id": "usa_nhgis_census_place_population_1990_2020_raw->usa_nhgis_census_place_population_1990_2020",
         "source": "usa_nhgis_census_place_population_1990_2020_raw",
+        "target": "usa_nhgis_census_place_population_1990_2020",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "usa_nhgis_census_place_geom_all_years_raw->usa_nhgis_census_place_population_1990_2020",
+        "source": "usa_nhgis_census_place_geom_all_years_raw",
         "target": "usa_nhgis_census_place_population_1990_2020",
         "cross": 1
       }
@@ -4504,6 +4659,14 @@
     },
     {
       "data": {
+        "id": "usa_census_place_stable_population->usa_raster_census_place",
+        "source": "usa_census_place_stable_population",
+        "target": "usa_raster_census_place",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
         "id": "usa_template_raster->usa_raster_census_place",
         "source": "usa_template_raster",
         "target": "usa_raster_census_place",
@@ -4514,14 +4677,6 @@
       "data": {
         "id": "usa_census_place_stable_geom->usa_raster_census_place",
         "source": "usa_census_place_stable_geom",
-        "target": "usa_raster_census_place",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "usa_census_place_stable_population->usa_raster_census_place",
-        "source": "usa_census_place_stable_population",
         "target": "usa_raster_census_place",
         "cross": 0
       }
@@ -4552,16 +4707,16 @@
     },
     {
       "data": {
-        "id": "usa_average_growth->usa_size_vs_growth_normalized",
-        "source": "usa_average_growth",
+        "id": "usa_size_vs_growth->usa_size_vs_growth_normalized",
+        "source": "usa_size_vs_growth",
         "target": "usa_size_vs_growth_normalized",
         "cross": 0
       }
     },
     {
       "data": {
-        "id": "usa_size_vs_growth->usa_size_vs_growth_normalized",
-        "source": "usa_size_vs_growth",
+        "id": "usa_average_growth->usa_size_vs_growth_normalized",
+        "source": "usa_average_growth",
         "target": "usa_size_vs_growth_normalized",
         "cross": 0
       }
@@ -4592,9 +4747,17 @@
     },
     {
       "data": {
-        "id": "usa_cluster_growth_population_analysis->usa_year_epoch",
-        "source": "usa_cluster_growth_population_analysis",
-        "target": "usa_year_epoch",
+        "id": "world_country_region->world_average_growth",
+        "source": "world_country_region",
+        "target": "world_average_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization_groups->world_average_growth",
+        "source": "world_urbanization_groups",
+        "target": "world_average_growth",
         "cross": 0
       }
     },
@@ -4608,24 +4771,8 @@
     },
     {
       "data": {
-        "id": "world_country_region->world_average_growth",
-        "source": "world_country_region",
-        "target": "world_average_growth",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
         "id": "analysis_parameters->world_average_size_growth_slope_with_borders",
         "source": "analysis_parameters",
-        "target": "world_average_size_growth_slope_with_borders",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_crosswalk_cshapes_code_to_iso_code->world_average_size_growth_slope_with_borders",
-        "source": "world_crosswalk_cshapes_code_to_iso_code",
         "target": "world_average_size_growth_slope_with_borders",
         "cross": 1
       }
@@ -4648,6 +4795,14 @@
     },
     {
       "data": {
+        "id": "world_crosswalk_cshapes_code_to_iso_code->world_average_size_growth_slope_with_borders",
+        "source": "world_crosswalk_cshapes_code_to_iso_code",
+        "target": "world_average_size_growth_slope_with_borders",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
         "id": "world_raster_ghsl_smod_all_years->world_cluster_base_geom",
         "source": "world_raster_ghsl_smod_all_years",
         "target": "world_cluster_base_geom",
@@ -4664,16 +4819,16 @@
     },
     {
       "data": {
-        "id": "world_cluster_growth_geom->world_cluster_growth_geocoding",
-        "source": "world_cluster_growth_geom",
+        "id": "world_country_borders_2019->world_cluster_growth_geocoding",
+        "source": "world_country_borders_2019",
         "target": "world_cluster_growth_geocoding",
         "cross": 0
       }
     },
     {
       "data": {
-        "id": "world_country_borders_2019->world_cluster_growth_geocoding",
-        "source": "world_country_borders_2019",
+        "id": "world_cluster_growth_geom->world_cluster_growth_geocoding",
+        "source": "world_cluster_growth_geom",
         "target": "world_cluster_growth_geocoding",
         "cross": 0
       }
@@ -4696,14 +4851,6 @@
     },
     {
       "data": {
-        "id": "world_cluster_growth_geom->world_cluster_growth_population",
-        "source": "world_cluster_growth_geom",
-        "target": "world_cluster_growth_population",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
         "id": "world_raster_ghsl_pop_all_years->world_cluster_growth_population",
         "source": "world_raster_ghsl_pop_all_years",
         "target": "world_cluster_growth_population",
@@ -4712,9 +4859,9 @@
     },
     {
       "data": {
-        "id": "world_cluster_growth_population->world_cluster_growth_population_country",
-        "source": "world_cluster_growth_population",
-        "target": "world_cluster_growth_population_country",
+        "id": "world_cluster_growth_geom->world_cluster_growth_population",
+        "source": "world_cluster_growth_geom",
+        "target": "world_cluster_growth_population",
         "cross": 0
       }
     },
@@ -4724,6 +4871,14 @@
         "source": "world_crosswalk_cshapes_code_to_iso_code",
         "target": "world_cluster_growth_population_country",
         "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_cluster_growth_population->world_cluster_growth_population_country",
+        "source": "world_cluster_growth_population",
+        "target": "world_cluster_growth_population_country",
+        "cross": 0
       }
     },
     {
@@ -4739,7 +4894,7 @@
         "id": "analysis_parameters->world_cluster_growth_population_country_analysis",
         "source": "analysis_parameters",
         "target": "world_cluster_growth_population_country_analysis",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -4848,56 +5003,32 @@
     },
     {
       "data": {
-        "id": "world_population_share_cities_above_1m->world_paper_stats",
-        "source": "world_population_share_cities_above_1m",
+        "id": "world_tot_pop_share_cities_above_1m_projections_prop_growth->world_paper_stats",
+        "source": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
         "target": "world_paper_stats",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_crosswalk_cshapes_code_to_iso_code->world_paper_stats",
-        "source": "world_crosswalk_cshapes_code_to_iso_code",
+        "id": "world_rank_size_slopes->world_paper_stats",
+        "source": "world_rank_size_slopes",
         "target": "world_paper_stats",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_size_vs_growth->world_paper_stats",
-        "source": "world_size_vs_growth",
+        "id": "world_tot_pop_share_cities_above_1m->world_paper_stats",
+        "source": "world_tot_pop_share_cities_above_1m",
         "target": "world_paper_stats",
         "cross": 1
       }
     },
     {
       "data": {
-        "id": "world_cluster_growth_population_country_analysis->world_paper_stats",
-        "source": "world_cluster_growth_population_country_analysis",
-        "target": "world_paper_stats",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_change_2025_2075->world_paper_stats",
-        "source": "world_rank_size_slopes_change_2025_2075",
-        "target": "world_paper_stats",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_size_growth_slopes_historical->world_paper_stats",
-        "source": "world_size_growth_slopes_historical",
-        "target": "world_paper_stats",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_change_1975_2025->world_paper_stats",
-        "source": "world_rank_size_slopes_change_1975_2025",
+        "id": "world_tot_pop_share_cities_above_1m_projections_extr->world_paper_stats",
+        "source": "world_tot_pop_share_cities_above_1m_projections_extr",
         "target": "world_paper_stats",
         "cross": 1
       }
@@ -4912,8 +5043,40 @@
     },
     {
       "data": {
-        "id": "world_rank_size_slopes->world_paper_stats",
-        "source": "world_rank_size_slopes",
+        "id": "world_tot_pop_share_cities_above_1m_projections_inc_returns->world_paper_stats",
+        "source": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "target": "world_paper_stats",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_size_growth_slopes_historical->world_paper_stats",
+        "source": "world_size_growth_slopes_historical",
+        "target": "world_paper_stats",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_cluster_growth_population_country_analysis->world_paper_stats",
+        "source": "world_cluster_growth_population_country_analysis",
+        "target": "world_paper_stats",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_crosswalk_cshapes_code_to_iso_code->world_paper_stats",
+        "source": "world_crosswalk_cshapes_code_to_iso_code",
+        "target": "world_paper_stats",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_change_1975_2025->world_paper_stats",
+        "source": "world_rank_size_slopes_change_1975_2025",
         "target": "world_paper_stats",
         "cross": 1
       }
@@ -4936,122 +5099,18 @@
     },
     {
       "data": {
-        "id": "world_urbanization_groups->world_population_share_cities_above_1m",
-        "source": "world_urbanization_groups",
-        "target": "world_population_share_cities_above_1m",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_urban_population->world_population_share_cities_above_1m",
-        "source": "world_urban_population",
-        "target": "world_population_share_cities_above_1m",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_historical->world_population_share_cities_above_1m",
-        "source": "world_population_share_cities_above_1m_historical",
-        "target": "world_population_share_cities_above_1m",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_projections->world_population_share_cities_above_1m",
-        "source": "world_population_share_cities_above_1m_projections",
-        "target": "world_population_share_cities_above_1m",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_vs_size->world_population_share_cities_above_1m_historical",
-        "source": "world_rank_vs_size",
-        "target": "world_population_share_cities_above_1m_historical",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_country_region->world_population_share_cities_above_1m_projections",
-        "source": "world_country_region",
-        "target": "world_population_share_cities_above_1m_projections",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_historical->world_population_share_cities_above_1m_projections",
-        "source": "world_population_share_cities_above_1m_historical",
-        "target": "world_population_share_cities_above_1m_projections",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes->world_population_share_cities_above_1m_projections",
-        "source": "world_rank_size_slopes",
-        "target": "world_population_share_cities_above_1m_projections",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_urban_population->world_population_share_cities_above_1m_projections",
-        "source": "world_urban_population",
-        "target": "world_population_share_cities_above_1m_projections",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_country_region->world_population_share_cities_above_1m_projections_ols",
-        "source": "world_country_region",
-        "target": "world_population_share_cities_above_1m_projections_ols",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_population_share_cities_above_1m_historical->world_population_share_cities_above_1m_projections_ols",
-        "source": "world_population_share_cities_above_1m_historical",
-        "target": "world_population_share_cities_above_1m_projections_ols",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_urban_population->world_population_share_cities_above_1m_projections_ols",
-        "source": "world_urban_population",
-        "target": "world_population_share_cities_above_1m_projections_ols",
-        "cross": 1
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_historical_ols->world_population_share_cities_above_1m_projections_ols",
-        "source": "world_rank_size_slopes_historical_ols",
-        "target": "world_population_share_cities_above_1m_projections_ols",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_urbanization_groups->world_rank_size_slopes",
-        "source": "world_urbanization_groups",
-        "target": "world_rank_size_slopes",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
         "id": "world_country_region->world_rank_size_slopes",
         "source": "world_country_region",
         "target": "world_rank_size_slopes",
         "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_projections->world_rank_size_slopes",
+        "source": "world_rank_size_slopes_projections",
+        "target": "world_rank_size_slopes",
+        "cross": 0
       }
     },
     {
@@ -5064,10 +5123,10 @@
     },
     {
       "data": {
-        "id": "world_rank_size_slopes_projections->world_rank_size_slopes",
-        "source": "world_rank_size_slopes_projections",
+        "id": "world_urbanization_groups->world_rank_size_slopes",
+        "source": "world_urbanization_groups",
         "target": "world_rank_size_slopes",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -5083,7 +5142,7 @@
         "id": "world_urbanization_groups->world_rank_size_slopes_change_1975_2025",
         "source": "world_urbanization_groups",
         "target": "world_rank_size_slopes_change_1975_2025",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -5096,17 +5155,9 @@
     },
     {
       "data": {
-        "id": "world_urbanization_groups->world_rank_size_slopes_change_2025_2075",
-        "source": "world_urbanization_groups",
-        "target": "world_rank_size_slopes_change_2025_2075",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes_change->world_rank_size_slopes_change_2025_2075",
-        "source": "world_rank_size_slopes_change",
-        "target": "world_rank_size_slopes_change_2025_2075",
+        "id": "world_rank_size_slopes->world_rank_size_slopes_decade_change",
+        "source": "world_rank_size_slopes",
+        "target": "world_rank_size_slopes_decade_change",
         "cross": 0
       }
     },
@@ -5115,15 +5166,7 @@
         "id": "world_urbanization_groups->world_rank_size_slopes_decade_change",
         "source": "world_urbanization_groups",
         "target": "world_rank_size_slopes_decade_change",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
-        "id": "world_rank_size_slopes->world_rank_size_slopes_decade_change",
-        "source": "world_rank_size_slopes",
-        "target": "world_rank_size_slopes_decade_change",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -5155,7 +5198,7 @@
         "id": "world_size_growth_slopes_projections->world_rank_size_slopes_projections",
         "source": "world_size_growth_slopes_projections",
         "target": "world_rank_size_slopes_projections",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -5171,7 +5214,7 @@
         "id": "world_cluster_growth_population_country_analysis->world_rank_vs_size",
         "source": "world_cluster_growth_population_country_analysis",
         "target": "world_rank_vs_size",
-        "cross": 0
+        "cross": 1
       }
     },
     {
@@ -5256,14 +5299,6 @@
     },
     {
       "data": {
-        "id": "world_size_growth_slopes_historical_urbanization->world_size_growth_slopes_projections",
-        "source": "world_size_growth_slopes_historical_urbanization",
-        "target": "world_size_growth_slopes_projections",
-        "cross": 0
-      }
-    },
-    {
-      "data": {
         "id": "world_urbanization->world_size_growth_slopes_projections",
         "source": "world_urbanization",
         "target": "world_size_growth_slopes_projections",
@@ -5272,18 +5307,18 @@
     },
     {
       "data": {
-        "id": "world_cluster_growth_population_country_analysis->world_size_vs_growth",
-        "source": "world_cluster_growth_population_country_analysis",
-        "target": "world_size_vs_growth",
+        "id": "world_size_growth_slopes_historical_urbanization->world_size_growth_slopes_projections",
+        "source": "world_size_growth_slopes_historical_urbanization",
+        "target": "world_size_growth_slopes_projections",
         "cross": 0
       }
     },
     {
       "data": {
-        "id": "world_average_growth->world_size_vs_growth_normalized",
-        "source": "world_average_growth",
-        "target": "world_size_vs_growth_normalized",
-        "cross": 0
+        "id": "world_cluster_growth_population_country_analysis->world_size_vs_growth",
+        "source": "world_cluster_growth_population_country_analysis",
+        "target": "world_size_vs_growth",
+        "cross": 1
       }
     },
     {
@@ -5296,10 +5331,298 @@
     },
     {
       "data": {
+        "id": "world_average_growth->world_size_vs_growth_normalized",
+        "source": "world_average_growth",
+        "target": "world_size_vs_growth_normalized",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
         "id": "world_size_vs_growth_normalized->world_size_vs_growth_normalized_by_group",
         "source": "world_size_vs_growth_normalized",
         "target": "world_size_vs_growth_normalized_by_group",
         "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_population->world_tot_pop_share_cities_above_1m",
+        "source": "world_population",
+        "target": "world_tot_pop_share_cities_above_1m",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m->world_tot_pop_share_cities_above_1m",
+        "source": "world_urb_pop_share_cities_above_1m",
+        "target": "world_tot_pop_share_cities_above_1m",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization->world_tot_pop_share_cities_above_1m",
+        "source": "world_urbanization",
+        "target": "world_tot_pop_share_cities_above_1m",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_population->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_urbanization",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_country_region",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_size_growth_slopes_historical->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_size_growth_slopes_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_urban_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_historical->world_tot_pop_share_cities_above_1m_projections_extr",
+        "source": "world_rank_size_slopes_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_extr",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_population->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_urbanization",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_country_region",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_urban_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_historical->world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "source": "world_rank_size_slopes_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_inc_returns",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_population->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_urbanization",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_country_region",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_urban_population",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_historical->world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "source": "world_rank_size_slopes_historical",
+        "target": "world_tot_pop_share_cities_above_1m_projections_prop_growth",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_urb_pop_share_cities_above_1m",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_urb_pop_share_cities_above_1m",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_urb_pop_share_cities_above_1m",
+        "source": "world_urban_population",
+        "target": "world_urb_pop_share_cities_above_1m",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urbanization_groups->world_urb_pop_share_cities_above_1m",
+        "source": "world_urbanization_groups",
+        "target": "world_urb_pop_share_cities_above_1m",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_projections->world_urb_pop_share_cities_above_1m",
+        "source": "world_urb_pop_share_cities_above_1m_projections",
+        "target": "world_urb_pop_share_cities_above_1m",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_vs_size->world_urb_pop_share_cities_above_1m_historical",
+        "source": "world_rank_vs_size",
+        "target": "world_urb_pop_share_cities_above_1m_historical",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->world_urb_pop_share_cities_above_1m_projections",
+        "source": "world_country_region",
+        "target": "world_urb_pop_share_cities_above_1m_projections",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_urb_pop_share_cities_above_1m_projections",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_urb_pop_share_cities_above_1m_projections",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_urb_pop_share_cities_above_1m_projections",
+        "source": "world_urban_population",
+        "target": "world_urb_pop_share_cities_above_1m_projections",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes->world_urb_pop_share_cities_above_1m_projections",
+        "source": "world_rank_size_slopes",
+        "target": "world_urb_pop_share_cities_above_1m_projections",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_urb_pop_share_cities_above_1m_historical->world_urb_pop_share_cities_above_1m_projections_ols",
+        "source": "world_urb_pop_share_cities_above_1m_historical",
+        "target": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_country_region->world_urb_pop_share_cities_above_1m_projections_ols",
+        "source": "world_country_region",
+        "target": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "cross": 1
+      }
+    },
+    {
+      "data": {
+        "id": "world_rank_size_slopes_historical_ols->world_urb_pop_share_cities_above_1m_projections_ols",
+        "source": "world_rank_size_slopes_historical_ols",
+        "target": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "cross": 0
+      }
+    },
+    {
+      "data": {
+        "id": "world_urban_population->world_urb_pop_share_cities_above_1m_projections_ols",
+        "source": "world_urban_population",
+        "target": "world_urb_pop_share_cities_above_1m_projections_ols",
+        "cross": 1
       }
     },
     {
